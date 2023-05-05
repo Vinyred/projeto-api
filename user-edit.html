@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editar Cadastro</title>
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <link rel="stylesheet" href="/fonts/material-icon/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <section class="edit">
+            <div class="container">
+                <div class="form-content">
+                    <form method="POST" id="edit-form" class="cadastro-form">
+                        <h2 class="form-title">Editar Cadastro</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Insira seu Nome" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email"
+                                placeholder="Insira seu Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="username" id="username"
+                                placeholder="Insira o Nome de Usuário" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password" id="password"
+                                placeholder="Insira a Senha" />
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="file" id="file" class="input-file">
+                            <label for="file" class="btn btn-tertiary js-labelFile">
+                                <i class="icon fa fa-check"></i>
+                                <span class="js-fileName">Selecionar Foto</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Confirmar" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        /*Função para mostrar o nome da img no input */
+        (function () {
+
+            'use strict';
+
+            $('.input-file').each(function () {
+                var $input = $(this),
+                    $label = $input.next('.js-labelFile'),
+                    labelVal = $label.html();
+
+                $input.on('change', function (element) {
+                    var fileName = '';
+                    if (element.target.value) fileName = element.target.value.split('\\').pop();
+                    fileName ? $label.addClass('has-file').find('.js-fileName').html(fileName) : $label.removeClass('has-file').html(labelVal);
+                });
+            });
+
+        })();
+    </script>
+</body>
+
+</html>
